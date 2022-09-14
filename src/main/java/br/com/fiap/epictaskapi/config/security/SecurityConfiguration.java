@@ -29,6 +29,8 @@ public class SecurityConfiguration {
                 .antMatchers(HttpMethod.GET, "/api/user/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/user/**").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/api/user/**").authenticated()
+                .antMatchers(HttpMethod.GET, "/api/grupo").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/grupo/").permitAll()
                 .anyRequest().denyAll()
             .and()
                 .headers().frameOptions().disable()
