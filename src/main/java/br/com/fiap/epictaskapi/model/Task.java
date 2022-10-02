@@ -1,18 +1,33 @@
 package br.com.fiap.epictaskapi.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "TB_TASK")
+@SequenceGenerator(name = "task", sequenceName = "SQ_TB_TASK", allocationSize = 1)
 public class Task {
  
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id 
+    @Column(name = "cd_task")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "task")
     private Long id;
+    
+    @Column(name = "ds_titulo")
     private String title;
+
+    @Column(name = "ds_descricao")
     private String description;
+
+    @Column(name = "nr_pontos")
     private int score;
+
+    @Column(name = "nr_status")
     private int status;
     
     public Task() {

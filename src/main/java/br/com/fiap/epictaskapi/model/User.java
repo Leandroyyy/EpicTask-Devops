@@ -9,24 +9,35 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-@Table(name = "TB_USER")
+@Table(name = "TB_USUARIO")
+@SequenceGenerator(name = "usuario", sequenceName = "SQ_TB_USUARIO", allocationSize = 1)
 public class User implements UserDetails {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id 
+    @Column(name = "cd_usuario")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario")
     private Long id;
+    
+    @Column(name = "ds_nome")
     private String name;
-    @Column(unique = true)
+
+    @Column(name = "ds_email",unique = true)
     private String email;
+
+    @Column(name = "ds_senha")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cd_role")
     private List<Role> roles;
 
     public User() {

@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import br.com.fiap.epictaskapi.model.Task;
 import br.com.fiap.epictaskapi.model.User;
 import br.com.fiap.epictaskapi.repository.TaskRepository;
-import br.com.fiap.epictaskapi.repository.UserRepository;
 import br.com.fiap.epictaskapi.service.UserService;
 
 @Configuration

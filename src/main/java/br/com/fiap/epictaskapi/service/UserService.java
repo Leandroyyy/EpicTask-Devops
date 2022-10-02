@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.data.domain.Page;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.fiap.epictaskapi.model.User;
@@ -30,9 +29,7 @@ public class UserService implements UserDetailsService{
 
   public void save(User user){
     user.setPassword(passwordEncoder.encode(user.getPassword()));
-    System.out.println("Ta passando por aqui 1 ");
     userRepository.save(user);
-    System.out.println("Ta passando por aqui 2 ");
   }
 
   public Optional<User> getById(Long id){
